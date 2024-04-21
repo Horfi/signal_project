@@ -7,13 +7,13 @@ import java.nio.file.Paths;
 import java.nio.file.StandardOpenOption;
 import java.util.concurrent.ConcurrentHashMap;
 
-public class fileOutputStrategy implements OutputStrategy {
+public class fileOutputStrategy implements OutputStrategy { // class name should be in uppercase 
 
-    private String BaseDirectory;
+    private String BaseDirectory;  // this should be in lowercase as its a variable in class  1st letter 
 
     public final ConcurrentHashMap<String, String> file_map = new ConcurrentHashMap<>();
 
-    public fileOutputStrategy(String baseDirectory) {
+    public fileOutputStrategy(String baseDirectory) {  // constructor also in uppercase as ht class i mean 1st letter
 
         this.BaseDirectory = baseDirectory;
     }
@@ -28,7 +28,7 @@ public class fileOutputStrategy implements OutputStrategy {
             return;
         }
         // Set the FilePath variable
-        String FilePath = file_map.computeIfAbsent(label, k -> Paths.get(BaseDirectory, label + ".txt").toString());
+        String FilePath = file_map.computeIfAbsent(label, k -> Paths.get(BaseDirectory, label + ".txt").toString());  // local variable hsould be in lower case 
 
         // Write the data to the file
         try (PrintWriter out = new PrintWriter(
