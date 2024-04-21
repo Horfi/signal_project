@@ -6,7 +6,7 @@ import com.cardio_generator.outputs.OutputStrategy;
 
 public class AlertGenerator implements PatientDataGenerator {
 
-    public static final Random randomGenerator = new Random();
+    public static final Random randomGenerator = new Random();  // constant all upper case 
     private boolean[] AlertStates; // false = resolved, true = pressed
 
     public AlertGenerator(int patientCount) {
@@ -17,13 +17,14 @@ public class AlertGenerator implements PatientDataGenerator {
     public void generate(int patientId, OutputStrategy outputStrategy) {
         try {
             if (AlertStates[patientId]) {
-                if (randomGenerator.nextDouble() < 0.9) { // 90% chance to resolve
+                if (randomGenerator.nextDouble() < 0.9) { // 90% chance to resolve  0.9 should be a named constant rn its out of knowhere no description
                     AlertStates[patientId] = false;
                     // Output the alert
                     outputStrategy.output(patientId, System.currentTimeMillis(), "Alert", "resolved");
                 }
             } else {
-                double Lambda = 0.1; // Average rate (alerts per period), adjust based on desired frequency
+                //lambda should be uppercase cuz its a constant 
+                double Lambda = 0.1; // Average rate (alerts per period), adjust based on desired frequency    
                 double p = -Math.expm1(-Lambda); // Probability of at least one alert in the period
                 boolean alertTriggered = randomGenerator.nextDouble() < p;
 
