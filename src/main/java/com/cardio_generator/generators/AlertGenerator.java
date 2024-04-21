@@ -3,17 +3,28 @@ package com.cardio_generator.generators;
 import java.util.Random;
 
 import com.cardio_generator.outputs.OutputStrategy;
-
+/**
+ * Generates fake alerts for patients 
+ */
 public class AlertGenerator implements PatientDataGenerator {
 
     public static final Random randomGenerator = new Random();  // constant all upper case 
     private boolean[] AlertStates; // false = resolved, true = pressed
-
+    /**
+     * Set up our patients' alert states.
+     * 
+     * @param patientCount the number of patients we're keeping an eye on
+     */
     public AlertGenerator(int patientCount) {
         AlertStates = new boolean[patientCount + 1];
     }
-
-    @Override
+    // 
+    @Override    /**
+     * generate 
+     * 
+     * @param patientId the ID of the patient
+     * @param outputStrategy how we're gonna blast this info out
+     */
     public void generate(int patientId, OutputStrategy outputStrategy) {
         try {
             if (AlertStates[patientId]) {
