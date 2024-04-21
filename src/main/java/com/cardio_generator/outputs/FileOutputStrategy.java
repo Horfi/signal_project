@@ -7,13 +7,13 @@ import java.nio.file.Paths;
 import java.nio.file.StandardOpenOption;
 import java.util.concurrent.ConcurrentHashMap;
 
-public class FileOutputStrategy implements OutputStrategy {
+public class fileOutputStrategy implements OutputStrategy {
 
     private String BaseDirectory;
 
     public final ConcurrentHashMap<String, String> file_map = new ConcurrentHashMap<>();
 
-    public FileOutputStrategy(String baseDirectory) {
+    public fileOutputStrategy(String baseDirectory) {
 
         this.BaseDirectory = baseDirectory;
     }
