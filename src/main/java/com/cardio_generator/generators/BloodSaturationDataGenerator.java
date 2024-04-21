@@ -3,11 +3,17 @@ package com.cardio_generator.generators;
 import java.util.Random;
 
 import com.cardio_generator.outputs.OutputStrategy;
-
+/**
+ * This class fakes the blood saturation levels 'cause real patients are too unpredictable.
+ */
 public class BloodSaturationDataGenerator implements PatientDataGenerator {
     private static final Random random = new Random();
     private int[] lastSaturationValues;
-
+    /**
+     *  Let's set up our pretend patients with some decent O2 stats.
+     * 
+     * @param patientCount How many fake patients we're dealing with.
+     */
     public BloodSaturationDataGenerator(int patientCount) {
         lastSaturationValues = new int[patientCount + 1];
 
@@ -16,7 +22,12 @@ public class BloodSaturationDataGenerator implements PatientDataGenerator {
             lastSaturationValues[i] = 95 + random.nextInt(6); // Initializes with a value between 95 and 100
         }
     }
-
+    /**
+     *  generate some numbers that look like blood saturation stats.
+     * 
+     * @param patientId The ID of the patient we're making up numbers for.
+     * @param outputStrategy Where we're sending these numbers off to.
+     */
     @Override
     public void generate(int patientId, OutputStrategy outputStrategy) {
         try {
