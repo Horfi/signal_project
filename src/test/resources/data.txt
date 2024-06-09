@@ -1,0 +1,6 @@
+1, 100.0, WhiteBloodCells, 1714376789050
+1, 200.0, WhiteBloodCells, 1714376789051
+2, 150.0, RedBloodCells, 1714376789052
+2, 180.0, Platelets, 1714376789053
+3, 120.0, WhiteBloodCells, 1714376789054
+3, 130.0, Hemoglobin, 1714376789055
