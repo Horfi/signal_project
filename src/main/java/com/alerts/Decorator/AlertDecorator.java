@@ -1,7 +1,6 @@
 package com.alerts.Decorator;
 
 import com.alerts.IAlert;
-
 import java.util.List;
 
 public abstract class AlertDecorator implements IAlert {

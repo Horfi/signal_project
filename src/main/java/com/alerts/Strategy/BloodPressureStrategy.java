@@ -28,11 +28,11 @@ public class BloodPressureStrategy implements AlertStrategy {
 
         AlertFactory factory = new BloodPressureAlertFactory();
         if (isCriticalThresholdAlert(lastUploaded, currentValue)) {
-            return factory.createAlert(String.valueOf(patient.getId()), "Critical Threshold Alert pressure", lastUploaded.getTimestamp(),1);
+            return factory.createAlert(String.valueOf(patient.getId()), "Critical Threshold Alert pressure", lastUploaded.getTimestamp(), 1);
         }
 
         if (trendAlert(records, lastUploaded)) {
-            return factory.createAlert(String.valueOf(patient.getId()), "Trend Alert", lastUploaded.getTimestamp(),1);
+            return factory.createAlert(String.valueOf(patient.getId()), "Trend Alert", lastUploaded.getTimestamp(), 1);
         }
 
         return null;

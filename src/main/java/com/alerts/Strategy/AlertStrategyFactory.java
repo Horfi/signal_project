@@ -1,20 +1,19 @@
 package com.alerts.Strategy;
 
-import com.alerts.Strategy.BloodPressureStrategy;
-import com.alerts.Strategy.HeartRateStrategy;
-import com.alerts.Strategy.OxygenSaturationStrategy;
+import java.util.HashMap;
+import java.util.Map;
 
 public class AlertStrategyFactory {
+    private static final Map<String, AlertStrategy> strategies = new HashMap<>();
+
+    static {
+        strategies.put("BloodPressure", new BloodPressureStrategy());
+        strategies.put("HeartRate", new HeartRateStrategy());
+        strategies.put("OxygenSaturation", new OxygenSaturationStrategy());
+        strategies.put("ECG", new HypotensiveHypoxemiaStrategy()); 
+    }
+
     public static AlertStrategy getStrategy(String recordType) {
-        switch (recordType) {
-            case "BloodPressure":
-                return new BloodPressureStrategy();
-            case "HeartRate":
-                return new HeartRateStrategy();
-            case "OxygenSaturation":
-                return new OxygenSaturationStrategy();
-            default:
-                return null;
-        }
+        return strategies.get(recordType);
     }
 }
