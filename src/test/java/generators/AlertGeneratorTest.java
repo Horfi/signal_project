@@ -3,7 +3,6 @@ package generators;
 import com.alerts.AlertGenerator;
 import com.data_management.DataStorage;
 import com.data_management.Patient;
-import com.data_management.PatientRecord;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
@@ -27,7 +26,6 @@ public class AlertGeneratorTest {
         patient.addRecord(110.0, "SystolicPressure", 1714376789052L);
         patient.addRecord(98.0, "Saturation", 1714376789053L);
         patient.addRecord(60.0, "ECG", 1714376789054L);
-        // Add more records as needed for your test case
 
         AlertGenerator alertGenerator = new AlertGenerator(storage);
         alertGenerator.evaluateData(patient);
@@ -76,8 +74,7 @@ public class AlertGeneratorTest {
     @Test
     void testBloodPressureStrategy() {
         Patient patient = new Patient(1);
-        patient.addRecord(190.0, "DiastolicPressure", 1714376789050L); // Hypertensive crisis
-
+        patient.addRecord(190.0, "DiastolicPressure", 1714376789050L);
         AlertGenerator alertGenerator = new AlertGenerator(storage);
         alertGenerator.evaluateData(patient);
 
@@ -87,7 +84,7 @@ public class AlertGeneratorTest {
     @Test
     void testHeartRateStrategy() {
         Patient patient = new Patient(1);
-        patient.addRecord(40.0, "ECG", 1714376789051L); // Bradycardia
+        patient.addRecord(40.0, "ECG", 1714376789051L); 
 
         AlertGenerator alertGenerator = new AlertGenerator(storage);
         alertGenerator.evaluateData(patient);
@@ -98,7 +95,7 @@ public class AlertGeneratorTest {
     @Test
     void testHypotensiveHypoxemiaStrategy() {
         Patient patient = new Patient(1);
-        patient.addRecord(70.0, "Saturation", 1714376789052L); // Hypoxemia
+        patient.addRecord(70.0, "Saturation", 1714376789052L); 
 
         AlertGenerator alertGenerator = new AlertGenerator(storage);
         alertGenerator.evaluateData(patient);
@@ -109,7 +106,7 @@ public class AlertGeneratorTest {
     @Test
     void testOxygenSaturationStrategy() {
         Patient patient = new Patient(1);
-        patient.addRecord(85.0, "Saturation", 1714376789053L); // Low oxygen saturation
+        patient.addRecord(85.0, "Saturation", 1714376789053L); 
 
         AlertGenerator alertGenerator = new AlertGenerator(storage);
         alertGenerator.evaluateData(patient);
