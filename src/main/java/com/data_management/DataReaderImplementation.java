@@ -8,7 +8,7 @@ import java.io.IOException;
 public class DataReaderImplementation implements DataReader {
     private final File directory;
 
-    //checks if provided path is valid if not throws exception
+    // Constructor to check if provided path is valid if not throws an exception
     public DataReaderImplementation(File directory) {
         if (!directory.isDirectory()) {
             throw new IllegalArgumentException("Specified path is not a directory: " + directory);
@@ -16,7 +16,7 @@ public class DataReaderImplementation implements DataReader {
         this.directory = directory;
     }
 
-    //iterates through files and calls parseAndStoreData for each one 
+    // Iterates through files and calls parseAndStoreData for each one
     @Override
     public void readData(DataStorage dataStorage) throws IOException {
         File[] files = directory.listFiles();
@@ -29,7 +29,7 @@ public class DataReaderImplementation implements DataReader {
         }
     }
 
-    // opens each file reads the data, each data is added to storage
+    // Opens each file, reads the data, and adds each data entry to the storage
     private void parseAndStoreData(File file, DataStorage dataStorage) {
         try (BufferedReader reader = new BufferedReader(new FileReader(file))) {
             String line;
