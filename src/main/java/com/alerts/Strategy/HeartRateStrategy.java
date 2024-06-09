@@ -2,14 +2,13 @@ package com.alerts.Strategy;
 
 import com.alerts.Alert;
 import com.alerts.IAlert;
-import com.alerts.factory.ECGAlertFactory;
+import com.alerts.factory.AlertFactory;
 import com.data_management.Patient;
 import com.data_management.PatientRecord;
 
 import java.util.List;
 
 public class HeartRateStrategy implements AlertStrategy {
-
     @Override
     public IAlert checkAlert(Patient patient) {
         if (patient == null) {
@@ -22,10 +21,12 @@ public class HeartRateStrategy implements AlertStrategy {
             return null;
         }
 
-        for (PatientRecord record : records) {
-            if ("HeartRate".equals(record.getRecordType()) && (record.getMeasurementValue() > 100 || record.getMeasurementValue() < 60)) {
-                return new ECGAlertFactory().createAlert(String.valueOf(patient.getId()), "Abnormal Heart Rate", record.getTimestamp(),1);
-            }
+        PatientRecord lastUploaded = records.get(records.size() - 1);
+        double currentValue = lastUploaded.getMeasurementValue();
+
+        if (currentValue > 100) {
+            IAlert alert = new Alert(String.valueOf(patient.getId()), "Abnormal Heart Rate", lastUploaded.getTimestamp(), 1);
+            return alert;
         }
 
         return null;

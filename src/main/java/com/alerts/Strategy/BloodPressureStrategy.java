@@ -1,5 +1,6 @@
 package com.alerts.Strategy;
 
+import com.alerts.Alert;
 import com.alerts.IAlert;
 import com.alerts.factory.AlertFactory;
 import com.alerts.factory.BloodPressureAlertFactory;
@@ -28,11 +29,13 @@ public class BloodPressureStrategy implements AlertStrategy {
 
         AlertFactory factory = new BloodPressureAlertFactory();
         if (isCriticalThresholdAlert(lastUploaded, currentValue)) {
-            return factory.createAlert(String.valueOf(patient.getId()), "Critical Threshold Alert pressure", lastUploaded.getTimestamp(), 1);
+            IAlert alert = new Alert(String.valueOf(patient.getId()), "Critical Threshold Alert pressure", lastUploaded.getTimestamp(), 1);
+            return alert;
         }
 
         if (trendAlert(records, lastUploaded)) {
-            return factory.createAlert(String.valueOf(patient.getId()), "Trend Alert", lastUploaded.getTimestamp(), 1);
+            IAlert alert = new Alert(String.valueOf(patient.getId()), "Trend Alert", lastUploaded.getTimestamp(), 1);
+            return alert;
         }
 
         return null;
