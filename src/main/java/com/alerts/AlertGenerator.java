@@ -13,54 +13,28 @@ import java.util.List;
 
 public class AlertGenerator {
     private final DataStorage dataStorage;
-    private final List<IAlert> generatedAlerts;
-    private final List<AlertStrategy> alertStrategies;
+    private final List<IAlert> alerts;
 
     public AlertGenerator(DataStorage dataStorage) {
         this.dataStorage = dataStorage;
-        this.generatedAlerts = new ArrayList<>();
-        this.alertStrategies = initializeStrategies();
+        this.alerts = new ArrayList<>();
     }
 
-    private List<AlertStrategy> initializeStrategies() {
-        List<AlertStrategy> strategies = new ArrayList<>();
-        strategies.add(AlertStrategyFactory.getStrategy("BloodPressure"));
-        strategies.add(AlertStrategyFactory.getStrategy("Hypoxia"));
-        strategies.add(AlertStrategyFactory.getStrategy("HeartRate"));
-        strategies.add(AlertStrategyFactory.getStrategy("Saturation"));
-        return strategies;
-    }
-
-    public void analyzePatientData(Patient patient) {
-        if (patient == null) {
-            System.err.println("ERROR: Patient data is null.");
-            return;
-        }
-
-        List<PatientRecord> records = patient.getRecords(0, System.currentTimeMillis());
-        for (PatientRecord record : records) {
-            AlertStrategy strategy = getStrategyForRecord(record);
+    public void evaluateData(Patient patient) {
+        for (PatientRecord record : patient.getRecords(0, System.currentTimeMillis())) {
+            AlertStrategy strategy = AlertStrategyFactory.getStrategy(record.getRecordType());
             if (strategy != null) {
-                IAlert alert = strategy.checkAlert(record);
+                IAlert alert = strategy.checkAlert(patient);
                 if (alert != null) {
-                    alert = new PriorityAlertDecorator(alert, "High");
+                    alert = new PriorityAlertDecorator(alert, 3);
                     alert = new RepeatedAlertDecorator(alert, 3);
-                    generatedAlerts.add(alert);
+                    alerts.add(alert);
                 }
             }
         }
     }
 
-    private AlertStrategy getStrategyForRecord(PatientRecord record) {
-        for (AlertStrategy strategy : alertStrategies) {
-            if (strategy.isApplicable(record)) {
-                return strategy;
-            }
-        }
-        return null;
-    }
-
-    public List<IAlert> getGeneratedAlerts() {
-        return generatedAlerts;
+    public List<IAlert> getAlerts() {
+        return alerts;
     }
 }

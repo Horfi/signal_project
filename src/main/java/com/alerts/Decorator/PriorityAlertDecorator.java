@@ -1,21 +1,15 @@
 package com.alerts.Decorator;
 
-import java.util.List;
-
 import com.alerts.IAlert;
 
+import java.util.List;
+
 public class PriorityAlertDecorator extends AlertDecorator {
-    private final IAlert decoratedAlert;
-    private final String priority;
+    private final int priority;
 
-    public PriorityAlertDecorator(IAlert decAlert, String priority) {
-        this.decoratedAlert = decAlert;
+    public PriorityAlertDecorator(IAlert alert, int priority) {
+        super(alert);
         this.priority = priority;
-    }
-
-    @Override
-    public String getPatientId() {
-        return decoratedAlert.getPatientId();
     }
 
     @Override
@@ -24,8 +18,12 @@ public class PriorityAlertDecorator extends AlertDecorator {
     }
 
     @Override
-    public long getTimestamp() {
-        return decoratedAlert.getTimestamp();
+    public void alertAction(List<IAlert> alerts) {
+        super.alertAction(alerts);
     }
 
+    @Override
+    public int getPriority() {
+        return priority;
+    }
 }

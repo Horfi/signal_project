@@ -32,6 +32,11 @@ public class Alert implements IAlert {
         return priority;
     }
 
+    @Override
+    public void alertAction(List<IAlert> alerts){
+        alerts.add(this);
+    }
+
 
 
 }

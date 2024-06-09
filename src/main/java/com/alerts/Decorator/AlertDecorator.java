@@ -2,29 +2,37 @@ package com.alerts.Decorator;
 
 import com.alerts.IAlert;
 
-public abstract class AlertDecorator implements IAlert {
-    protected IAlert decAlert;
+import java.util.List;
 
-    public AlertDecorator(IAlert decoratedAlert) {
-        this.decAlert = decoratedAlert;
+public abstract class AlertDecorator implements IAlert {
+    protected final IAlert decoratedAlert;
+
+    public AlertDecorator(IAlert alert) {
+        this.decoratedAlert = alert;
     }
 
     @Override
     public String getPatientId() {
-        return decAlert.getPatientId();
+        return decoratedAlert.getPatientId();
     }
 
     @Override
     public String getCondition() {
-        return decAlert.getCondition();
+        return decoratedAlert.getCondition();
     }
 
     @Override
     public long getTimestamp() {
-        return decAlert.getTimestamp();
+        return decoratedAlert.getTimestamp();
     }
+
     @Override
     public int getPriority() {
-        return decAlert.getPriority();
+        return decoratedAlert.getPriority();
+    }
+
+    @Override
+    public void alertAction(List<IAlert> alerts) {
+        decoratedAlert.alertAction(alerts);
     }
 }
