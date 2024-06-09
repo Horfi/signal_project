@@ -1,0 +1,33 @@
+Data Management Diagram
+
+This diagram illustrates the DataStorage class responsible for storing, retrieving, 
+and deleting patient data, alongside the PatientData class that holds the patient-specific information, 
+and the DataRetriever which fetches patient data based on ID. 
+This setup ensures comprehensive data management and easy retrieval for analysis.
+
+
+
+
+Patient Identification Diagram
+
+This diagram depicts how patient data is linked to their respective profiles. 
+The PatientIdentifier class matches incoming data with existing patient records (PatientRecord).
+ The IdentityManager handles data integrity and impersonation issues, 
+ensuring accurate patient identification and management.
+
+
+
+Alert Generation Diagram
+
+The alert generation system is shown with the AlertGenerator continuously monitoring patient data.
+ It processes data against predefined thresholds, generating alerts (Alert) which are managed by AlertManager. 
+Devices send data to the AlertGenerator, ensuring real-time monitoring and timely alerts for critical conditions.
+
+
+
+Access Control Diagram
+
+This diagram outlines the security mechanisms with the SecurityCheck class,
+ which controls access to the data storage system. 
+It ensures only authorized personnel can access sensitive patient data, 
+maintaining data security and privacy.

@@ -1,0 +1,48 @@
+testNoAlerts:
+
+Purpose: To verify that the AlertGenerator does not generate false alerts when all patient data is within normal ranges.
+Justification: Ensures the system does not overreact to normal conditions, maintaining user trust and system reliability.
+testAbnormalDataAlerts:
+
+Purpose: To check if the AlertGenerator correctly identifies and generates alerts for abnormal patient data values.
+Justification: Validates that the alert system is functioning correctly and capable of flagging critical health issues.
+testAbnormalTrendsInData:
+
+Purpose: To assess the system's ability to detect abnormal trends over time in patient data.
+Justification: Trend detection is important for early diagnosis and prevention of worsening conditions, ensuring timely medical intervention.
+testHypoxia:
+
+Purpose: To verify the alert generation for conditions related to low oxygen levels in the blood.
+Justification: Hypoxia is a serious condition, and the system must be able to identify and alert healthcare providers immediately.
+testBloodPressureStrategy:
+
+Purpose: To validate that the BloodPressureStrategy correctly identifies abnormal blood pressure readings and generates appropriate alerts.
+Justification: Blood pressure is a critical health indicator, and accurate alerts for hypertension or hypotension are essential for patient safety.
+testHeartRateStrategy:
+
+Purpose: To ensure the HeartRateStrategy generates alerts for abnormal heart rate readings.
+Justification: Heart rate anomalies, such as bradycardia or tachycardia, need to be promptly detected and addressed.
+testHypotensiveHypoxemiaStrategy:
+
+Purpose: To check the detection of combined hypotension and hypoxemia conditions.
+Justification: This strategy is essential for identifying patients at risk of severe hypoxemic conditions, which require immediate medical attention.
+testOxygenSaturationStrategy:
+
+Purpose: To verify that low oxygen saturation levels are correctly identified and alerted by the system.
+Justification: Low oxygen saturation can lead to critical conditions; hence, accurate detection and alerting are crucial for patient care.
+addPatientData_storesDataCorrectly:
+
+Purpose: To ensure that patient data is stored correctly in the DataStorage.
+Justification: Proper data storage is foundational for accurate data retrieval and subsequent analysis.
+getRecords_filtersRecordsByTime:
+
+Purpose: To test that DataStorage filters patient records correctly based on the given time range.
+Justification: Ensures that the system retrieves the correct subset of data, which is crucial for accurate monitoring and alert generation.
+getAllPatients_returnsAllPatients:
+
+Purpose: To verify that DataStorage correctly returns all stored patients.
+Justification: Validates the integrity and completeness of patient data management.
+addRecord_addsRecordCorrectly:
+
+Purpose: To confirm that adding a record to a patient works as expected.
+Justification: Ensures individual patient records are managed correctly, supporting accurate health tracking.
