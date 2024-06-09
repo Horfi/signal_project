@@ -32,6 +32,10 @@ public class PatientRecord {
         this.timestamp = timestamp;
     }
 
+    public PatientRecord(String string, long timeMillis, int i, int j, int k, int l, int m) {
+        //TODO Auto-generated constructor stub
+    }
+
     /**
      * Returns the patient ID associated with this record.
      * 
