@@ -14,7 +14,7 @@ import com.alerts.AlertGenerator;
  */
 public class DataStorage {
     private Map<Integer, Patient> patientMap; // Stores patient objects indexed by their unique patient ID.
-
+    private DataStorage dataStorage;
     /**
      * Constructs a new instance of DataStorage, initializing the underlying storage
      * structure.
@@ -107,5 +107,14 @@ public class DataStorage {
         for (Patient patient : storage.getAllPatients()) {
             alertGenerator.evaluateData(patient);
         }
+    }
+
+    public DataStorage getDataStorage(){
+        return dataStorage;
+    }
+
+    public static void removeInstance() {
+        // TODO Auto-generated method stub
+        throw new UnsupportedOperationException("Unimplemented method 'removeInstance'");
     }
 }

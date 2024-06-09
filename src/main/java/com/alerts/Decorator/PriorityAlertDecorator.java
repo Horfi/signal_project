@@ -5,9 +5,9 @@ import com.alerts.IAlert;
 import java.util.List;
 
 public class PriorityAlertDecorator extends AlertDecorator {
-    private final int priority;
+    private final String priority;
 
-    public PriorityAlertDecorator(IAlert alert, int priority) {
+    public PriorityAlertDecorator(IAlert alert, String priority) {
         super(alert);
         this.priority = priority;
     }
@@ -24,6 +24,6 @@ public class PriorityAlertDecorator extends AlertDecorator {
 
     @Override
     public int getPriority() {
-        return priority;
+        return decoratedAlert.getPriority();
     }
 }

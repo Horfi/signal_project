@@ -26,7 +26,7 @@ public class AlertGenerator {
             if (strategy != null) {
                 IAlert alert = strategy.checkAlert(patient);
                 if (alert != null) {
-                    alert = new PriorityAlertDecorator(alert, 3);
+                    alert = new PriorityAlertDecorator(alert, "High");
                     alert = new RepeatedAlertDecorator(alert, 3);
                     alerts.add(alert);
                 }
